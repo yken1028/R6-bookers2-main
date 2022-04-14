@@ -10,14 +10,14 @@
   		<h2>Book detail</h2>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(user_path(current_user)) do %>
-            <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
+          <td><%= link_to(user_path(@book.user)) do %>
+            <%= image_tag @book.user.get_profile_image,size:"100x100" %><br>
             <%= @book.user.name %>
             <% end %>
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
-            <% if current_user.name == @book.user.name then %>
+            <% if current_user == @book.user then %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
             <% end %>
