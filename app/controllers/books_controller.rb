@@ -6,7 +6,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    #@books = Book.all
+    @books = Book.left_joins(:pastweek_favorites).group(:id).order("count(book_id) desc")
     @book = Book.new
   end
 
