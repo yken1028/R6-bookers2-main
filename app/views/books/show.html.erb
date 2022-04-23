@@ -35,8 +35,11 @@
             </td>
             <% end %>
           <% end %>
-          <td nowrap>
+          <td>
             コメント数：<%= @book.book_comments.count %>
+          </td>
+          <td>
+            <p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p>
           </td>
         </tr>
       </table>
