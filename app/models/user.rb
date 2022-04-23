@@ -18,6 +18,10 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  #DM機能で使う
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   def get_profile_image
